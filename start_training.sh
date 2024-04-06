@@ -8,7 +8,9 @@ export SPARK_AGENTPORT=$[$RANDOM + 1025] #3100
 
 rcssserver3d --agent-port $SPARK_AGENTPORT --server-port $SPARK_SERVERPORT &
 PID=$!
-#/home/jtj/RoboViz/bin/roboviz.sh --serverPort=$SPARK_SERVERPORT &
+<roboviz shell> --serverPort=$SPARK_SERVERPORT &
+# replace the <roboviz shell> with the Roboviz Starter if you want to check the performance of the parameters
+# such as /home/apollo3d/RoboViz/bin/roboviz.sh --serverPort=$SPARK_SERVERPORT &
 PID2=$!
 
 sleep 5
