@@ -6,12 +6,27 @@
 export SPARK_SERVERPORT=$[$RANDOM + 1025] #3200
 export SPARK_AGENTPORT=$[$RANDOM + 1025] #3100
 
+START_ROBOVIZ="false"
+while getopts r name
+do
+  case $name in
+  r)  START_ROBOVIZ="true";;
+  ?)  printf "Unknown option -$name\n"
+      exit 2
+  esac
+done
+
 rcssserver3d --agent-port $SPARK_AGENTPORT --server-port $SPARK_SERVERPORT &
 PID=$!
-<roboviz shell> --serverPort=$SPARK_SERVERPORT &
-# replace the <roboviz shell> with the Roboviz Starter if you want to check the performance of the parameters
+
+# Set ROBOVIZ_SCRIPT to the path of the RoboViz start script if you want to check the performance of the parameters
 # such as /home/apollo3d/RoboViz/bin/roboviz.sh --serverPort=$SPARK_SERVERPORT &
-PID2=$!
+ROBOVIZ_SCRIPT=
+if [ $START_ROBOVIZ = "true" ] && ! -z $ROBOVIZ_SCRIPT
+then
+  $ROBOVIZ_SCRIPT --serverPort=$SPARK_SERVERPORT &
+  PID2=$!
+fi
 
 sleep 5
 DIR_SCRIPT="$( cd "$( dirname "$0" )" && pwd )" 

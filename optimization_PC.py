@@ -52,7 +52,11 @@ def run(new_param_list, Gen, Num):
     inputFile = "params_{0}_i_{1}.txt".format(Gen, Num)
     outputFile = "value_{0}_i_{1}.txt".format(Gen, Num)
     writeToFile(new_param_list, Param_dir, inputFile)
-    command1 = ["nohup", "./start_training.sh", Param_dir+inputFile, Results_dir+outputFile, "&"]
+    command1 = ["nohup", "./start_training.sh"]
+    if Num == 0:
+        # Only one instance of RoboViz per generation
+        command1.append("-r")
+    command1 += [Param_dir+inputFile, Results_dir+outputFile, "&"]
     get_job_status()
 
     # We don't want too many jobs running at the same time
