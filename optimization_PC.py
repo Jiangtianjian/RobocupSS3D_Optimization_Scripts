@@ -39,6 +39,7 @@ def writeToFile(new_param_list, Param_dir, inputFile):
     out_file = open(Param_dir + inputFile, 'w')
     for param_name, param_num in running_param_dic.items():
         out_file.write("{}\t{}\n".format(param_name, param_num))
+    out_file.write("\n")
     out_file.close()
 
 
@@ -55,7 +56,9 @@ def run(new_param_list, Gen, Num):
     command1 = ["nohup", "./start_training.sh"]
     if Num == 0:
         # Only one instance of RoboViz per generation
-        command1.append("-r")
+        command1.append("true")
+    else:
+        command1.append("false")
     command1 += [Param_dir+inputFile, Results_dir+outputFile, "&"]
     get_job_status()
 

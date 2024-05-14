@@ -6,16 +6,7 @@
 export SPARK_SERVERPORT=$[$RANDOM + 1025] #3200
 export SPARK_AGENTPORT=$[$RANDOM + 1025] #3100
 
-START_ROBOVIZ="false"
-while getopts r name
-do
-  case $name in
-  r)  START_ROBOVIZ="true";;
-  ?)  printf "Unknown option -$name\n"
-      exit 2
-  esac
-done
-
+START_ROBOVIZ=$1
 rcssserver3d --agent-port $SPARK_AGENTPORT --server-port $SPARK_SERVERPORT &
 PID=$!
 
@@ -31,10 +22,10 @@ fi
 sleep 5
 DIR_SCRIPT="$( cd "$( dirname "$0" )" && pwd )" 
 
-DIR_PARAMS="$( cd "$( dirname "$1" )" && pwd )"
-DIR_OUTPUT="$( cd "$( dirname "$2" )" && pwd )"
-PARAMS_FILE=$DIR_PARAMS/$(basename $1)
-OUTPUT_FILE=$DIR_OUTPUT/$(basename $2)
+DIR_PARAMS="$( cd "$( dirname "$2" )" && pwd )"
+DIR_OUTPUT="$( cd "$( dirname "$3" )" && pwd )"
+PARAMS_FILE=$DIR_PARAMS/$(basename $2)
+OUTPUT_FILE=$DIR_OUTPUT/$(basename $3)
 
 echo "$PARAMS_FILE!"
 
