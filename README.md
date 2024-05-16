@@ -43,6 +43,12 @@ python3 optimization_PC.py --sigma d --popsize n --run_times k
 ./start_training.sh true test_params.txt
 ```
 
+**Notice**
+
+In order to satisfy the GPL LICENSE, the source code of the binary we used in the script is upload at
+
+https://github.com/Jiangtianjian/magmaRelease
+
 Contributers:
 
 Tianjian Jiang (Team leader of Apollo3D from 2021 to 2022), Hannes Braun(magmaOffenburg)
