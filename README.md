@@ -1,8 +1,8 @@
 # RobocupSS3D_Optimization_Scripts
 
+This is an open-source optimization script (Test) authored by Tianjian Jiang (a member of the Apollo3D team from 2021 to 2022) with the assistance of Hannes Braun (magmaOffenburg). Developed based on magma OffenburgRelease, this script is governed by the GPL LICENSE. Optimization_PC.py is a script designed for executing Robocup3D parallel optimization on a single machine.
 
-This is the open-source optimization scripts(Test) written by Tianjian Jiang(Apollo3D team member from 2021 to 2022) under the help of Hannes Braun(magmaOffenburg). Also as a code developed based on magma OffenburgRelease, this script is based on the GPL LICENSE. The Optimization_PC.py is a script that allows you to run Robocup3D parallel optimization on a single machine.
-This is a LTS program and more function would be upload later, so please do not hesitate to set up issues and pull requests.
+This is an LTS program, with additional features to be uploaded later, so please feel free to raise issues and submit pull requests without hesitation.
 
 ## Setup Instructions
 
@@ -15,7 +15,8 @@ git clone <address from github>
 2. Install the Python Environment:
 
 ```bash
-pip install numpy cma
+sudo apt install python3-pip
+pip3 install numpy cma
 ```
 
 3. Set the parameters in the origin_params.txt.
@@ -45,7 +46,7 @@ python3 optimization_PC.py --sigma d --popsize n --run_times k
 
 **Notice**
 
-In order to satisfy the GPL LICENSE, the source code of the binary we used in the script is upload at
+Voluntarily adhering to the GPL LICENSE, we have proactively uploaded the source code of the binary used in the script at the following location:
 
 https://github.com/Jiangtianjian/magmaRelease
 
