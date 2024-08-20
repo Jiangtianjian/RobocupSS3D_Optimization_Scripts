@@ -44,6 +44,13 @@ python3 optimization_PC.py --sigma d --popsize n --run_times k
 ./start_training.sh true test_params.txt
 ```
 
+## After Optimization
+
+1. Search for the best solution of the optimization.
+```bash
+python3 showResult.py -i <iteration number> -p <population number>
+```
+
 **Notice**
 
 Voluntarily adhering to the GPL LICENSE, we have proactively uploaded the source code of the binary used in the script at the following location:
