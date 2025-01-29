@@ -28,10 +28,10 @@ pip3 install numpy cma
 ```bash
 python3 optimization_PC.py
 ```
-If you want to custom the parameters with intial sigma d, n populations per generation and run totally k times:
+If you want to custom the parameters with intial sigma d, k populations per generation and run totally n generations:
 
 ```bash
-python3 optimization_PC.py --sigma d --popsize n --run_times k
+python3 optimization_PC.py --sigma d --max_iter n --popsize k
 ```
 
 6. Test the optimized parameters
