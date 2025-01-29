@@ -60,6 +60,8 @@ def run(new_param_list, Gen, Num):
     else:
         command1.append("false")
     command1 += [Param_dir+inputFile, Results_dir+outputFile, "&"]
+    # Have a rest after starting a job.
+    time.sleep(2)
     get_job_status()
 
     # We don't want too many jobs running at the same time
@@ -144,7 +146,8 @@ def params_eva(ind):
         get_job_status()
         Cur_complete_jobs = get_job_Done()
         print("{0} jobs has completed, {1} jobs running, {2} jobs idle".format(get_job_Done(), get_job_running(), get_job_Idle()))
-
+    # Take a rest after running a generation to make the script more stable
+    time.sleep(180)
     stop_Rest_jobs()
 
     for i in range(Pop_size):
