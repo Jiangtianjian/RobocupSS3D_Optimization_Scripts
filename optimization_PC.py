@@ -164,11 +164,11 @@ def params_eva(ind):
 def main():
     global Gen_size, run_times, Current_Generation, run_sigma,job_status_table,CPU_count, run_time_now, param_names, param_nums
     parser = argparse.ArgumentParser(description="Input the cma options")
-    parser.add_argument("--run_times", type=int, default=60000)
-    parser.add_argument("--popsize", type=int, default=48)
-    parser.add_argument("--sigma", type=float, default=0.1)
+    parser.add_argument("--max_iter", type=int, default=400)
+    parser.add_argument("--popsize", type=int, default=200)
+    parser.add_argument("--sigma", type=float, default=0.2)
     args = parser.parse_args()
-    run_times = args.run_times
+    max_iter = args.max_iter
     Gen_size = args.popsize
     CPU_count = os.cpu_count()
     run_sigma = args.sigma
@@ -180,7 +180,8 @@ def main():
     if not os.path.exists("./Train_process"):
         os.mkdir('./Train_process')
     load_params('origin_params.txt')
-    cma.fmin(None, len(param_names) * [1.0], sigma0=run_sigma, options={'popsize': Gen_size}, parallel_objective=params_eva)
+    cma.fmin(None, len(param_names) * [1.0], sigma0=run_sigma, options={'popsize': Gen_size, "maxiter": max_iter}, parallel_objective=params_eva)
+
 
 
 if __name__ == "__main__":
